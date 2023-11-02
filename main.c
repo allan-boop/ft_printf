@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahans <allan.hans68350@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 15:44:09 by ahans             #+#    #+#             */
-/*   Updated: 2023/11/02 16:55:58 by ahans            ###   ########.fr       */
+/*   Created: 2023/11/02 14:44:27 by ahans             #+#    #+#             */
+/*   Updated: 2023/11/02 18:22:08 by ahans            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
+#include "ft_printf.h"
+#include <stdio.h>
 
-# include <stdarg.h>
-# include "libft/libft.h"
-
-typedef struct s_flags
+int main()
 {
-	int			len;
-	const char	*charac;
-	int			err;
-}	t_flags;
+	ft_printf("ici %smoi%cqui\n%x\nun nombre %d\n", "c toi + ", 'T', 223, 12);
+	printf("%gfdg");
 
-int	ft_printf(const char *, ...);
-
-#endif
+	return (0);
+}
