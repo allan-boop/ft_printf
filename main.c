@@ -6,7 +6,7 @@
 /*   By: ahans <allan.hans68350@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 14:44:27 by ahans             #+#    #+#             */
-/*   Updated: 2023/11/02 18:22:08 by ahans            ###   ########.fr       */
+/*   Updated: 2023/11/03 17:39:44 by ahans            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 
 int main()
 {
-	ft_printf("ici %smoi%cqui\n%x\nun nombre %d\n", "c toi + ", 'T', 223, 12);
-	printf("%gfdg");
+//	int f = 12656;
+//	printf(" %p ", -1);
+	ft_printf(" %p ", -1);
 
 	return (0);
 }

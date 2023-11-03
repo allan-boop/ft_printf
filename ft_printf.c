@@ -6,13 +6,18 @@
 /*   By: ahans <allan.hans68350@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 15:44:13 by ahans             #+#    #+#             */
-/*   Updated: 2023/11/02 18:15:54 by ahans            ###   ########.fr       */
+/*   Updated: 2023/11/03 17:08:22 by ahans            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 void	ft_putstr(char *str, t_flags *ret)
 {
+	if(!str)
+	{
+		write(1, "(null)", 6);
+		return ;
+	}
 	while(*str)
 	{
 		write(1, str, 1);
@@ -30,10 +35,8 @@ int	check_arg_type(const char *charac)
 		return ((int)'s');
 	else if (*charac == 'p')
 		return ((int)'p');
-	else if (*charac == 'd')
+	else if (*charac == 'd' || *charac == 'i')
 		return ((int)'d');
-	else if (*charac == 'i')
-		return ((int)'i');
 	else if (*charac == 'u')
 		return ((int)'u');
 	else if (*charac == 'x')
@@ -58,13 +61,13 @@ t_flags	arg_c(va_list arg, t_flags *ret)
 }
 
 t_flags arg_s(va_list arg, t_flags *ret)
-{	
+{
 	ft_putstr(va_arg(arg, char *), ret);
 	ret->charac++;
 	return (*ret);
 }
 
-t_flags	arg_x(va_list arg, t_flags *ret)
+t_flags	arg_x(va_list arg, t_flags *ret, char min_maj)
 {
     char hexadecimal[10];
     int index = 0;
@@ -80,7 +83,7 @@ t_flags	arg_x(va_list arg, t_flags *ret)
         if (remainder < 10)
             hexadecimal[index] = remainder + '0';
     	else
-            hexadecimal[index] = remainder - 10 + 'A';
+            hexadecimal[index] = remainder - 10 + min_maj;
         decimalNumber /= 16;
         index++;
     }
@@ -100,6 +103,33 @@ t_flags	arg_x(va_list arg, t_flags *ret)
 	return (*ret);
 }
 
+t_flags arg_p(va_list arg, t_flags *ret)
+{
+    unsigned long decimalNumber = (unsigned long)va_arg(arg, long);
+    unsigned long temp = decimalNumber;
+    int numDigits = 0;
+    while (temp > 0) {
+        temp /= 16;
+        numDigits++;
+    }
+    char *hexadecimal = (char *)malloc(numDigits + 1);
+    if (hexadecimal == NULL) {
+    }
+    int index = numDigits;
+    while (decimalNumber > 0) {
+        int remainder = decimalNumber % 16;
+        if (remainder < 10)
+            hexadecimal[--index] = remainder + '0';
+        else
+            hexadecimal[--index] = remainder - 10 + 'a';
+        decimalNumber /= 16;
+    }
+    hexadecimal[numDigits] = '\0';
+    ft_putstr(hexadecimal, ret);
+    ret->charac++;
+    free(hexadecimal);
+    return *ret;
+}
 t_flags arg_d(va_list arg, t_flags *ret)
 {
 	ft_putstr(ft_itoa(va_arg(arg, int)), ret);
@@ -119,12 +149,22 @@ t_flags	arg_parser(va_list arg, char type, t_flags *ret)
 		ret->charac++;
 		return (arg_s(arg, ret));
 	}
+	else if (type == 'p')
+	{
+		ret->charac++;
+		return (arg_p(arg, ret));
+	}
 	else if (type == 'x')
 	{
 		ret->charac++;
-		return (arg_x(arg,ret));
+		return (arg_x(arg, ret, 'a'));
 	}
-	else if (type == 'd' || type == 'i' || type == 'u')
+	else if (type == 'x')
+	{
+		ret->charac++;
+		return (arg_x(arg, ret, 'A'));
+	}
+	else if (type == 'd' || type == 'u')
 	{
 		ret->charac++;
 		return (arg_d(arg, ret));
@@ -162,12 +202,15 @@ int	check_charac(va_list args, t_flags *ret)
 int	ft_printf(const char *format, ...)
 {
 	t_flags	*ret;
+	int		leng;
 	va_list args;
-	va_start(args, format);
 
+	va_start(args, format);
 	ret = malloc(sizeof(t_flags));
 	ret->len = 0;
 	ret->charac = format;
 	ret->err = 0;
-	return(check_charac(args, ret));
+	leng = check_charac(args, ret);
+	free(ret);
+	return(leng);
 }
