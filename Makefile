@@ -11,6 +11,12 @@ LIBFT_NAME		= libft.a
 ## SOURCES
 
 SRC_FILES =	ft_printf.c \
+			ft_putstr.c \
+			arg_c.c \
+			arg_s.c \
+			arg_d.c \
+			arg_p.c \
+			arg_x.c
 
 OBJ_FILES =	$(SRC_FILES:.c=.o)
 

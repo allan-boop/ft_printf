@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   arg_c.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahans <allan.hans68350@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 14:44:27 by ahans             #+#    #+#             */
-/*   Updated: 2023/11/04 12:50:07 by ahans            ###   ########.fr       */
+/*   Created: 2023/11/04 13:59:58 by ahans             #+#    #+#             */
+/*   Updated: 2023/11/04 14:00:22 by ahans            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
-int main()
+t_flags	arg_c(va_list arg, t_flags *ret)
 {
-	int f = 12656;
-	fflush(stdout);
-	printf("og NULL %s NULL \n", NULL);
-	fflush(stdout);
-	ft_printf("ft NULL %s NULL \n", NULL);
-	fflush(stdout);
+	char	f;
 
-	return (0);
+	f = va_arg(arg, int);
+	write(1, &f, 1);
+	ret->charac++;
+	ret->len++;
+	return (*ret);
 }
