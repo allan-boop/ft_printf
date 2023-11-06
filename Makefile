@@ -16,7 +16,8 @@ SRC_FILES =	ft_printf.c \
 			arg_s.c \
 			arg_d.c \
 			arg_p.c \
-			arg_x.c
+			arg_x.c \
+			arg_percent.c
 
 OBJ_FILES =	$(SRC_FILES:.c=.o)
 
