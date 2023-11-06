@@ -6,7 +6,7 @@
 /*   By: ahans <allan.hans68350@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 15:44:13 by ahans             #+#    #+#             */
-/*   Updated: 2023/11/06 13:47:51 by ahans            ###   ########.fr       */
+/*   Updated: 2023/11/06 16:38:33 by ahans            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,17 @@ t_flags	check_arg_type(va_list arg, t_flags *ret)
 	else if (*ret->charac == 's')
 		return (arg_s(arg, ret));
 	else if (*ret->charac == 'p')
-		return (arg_p(arg, ret));
+		return (arg_p(va_arg(arg, unsigned long long), ret));
 	else if (*ret->charac == 'd' || *ret->charac == 'i')
 		return (arg_d(arg, ret));
 	else if (*ret->charac == 'x')
-		return (arg_x(arg, ret, 'a'));
+		return (arg_x(va_arg(arg, int), ret, 'a'));
 	else if (*ret->charac == 'X')
-		return (arg_x(arg, ret, 'A'));
+		return (arg_x(va_arg(arg, int), ret, 'A'));
 	else if (*ret->charac =='%')
 		return (arg_percent(ret));
+	else if (*ret->charac =='u')
+		return (arg_u(va_arg(arg, unsigned int), ret));
 	else
 		return (*ret);
 }
