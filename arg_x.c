@@ -6,7 +6,7 @@
 /*   By: ahans <allan.hans68350@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 13:58:19 by ahans             #+#    #+#             */
-/*   Updated: 2023/11/06 15:53:16 by ahans            ###   ########.fr       */
+/*   Updated: 2023/11/07 11:00:58 by ahans            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	ft_ptr_len(uintptr_t num)
 	}
 	return (len);
 }
+
 int	ft_int_len(unsigned int num)
 {
 	int	len;

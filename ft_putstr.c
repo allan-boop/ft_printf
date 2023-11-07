@@ -6,7 +6,7 @@
 /*   By: ahans <allan.hans68350@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 15:01:03 by ahans             #+#    #+#             */
-/*   Updated: 2023/11/04 15:01:25 by ahans            ###   ########.fr       */
+/*   Updated: 2023/11/07 10:56:02 by ahans            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	ft_putstr(char *str, t_flags *ret)
 {
-	if(!str)
+	if (!str)
 	{
 		write(1, "(null)", 6);
 		ret->len += 6;
 		return ;
 	}
-	while(*str)
+	while (*str)
 	{
 		write(1, str, 1);
 		str++;

@@ -6,7 +6,7 @@
 /*   By: ahans <allan.hans68350@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 16:12:26 by ahans             #+#    #+#             */
-/*   Updated: 2023/11/06 17:37:25 by ahans            ###   ########.fr       */
+/*   Updated: 2023/11/07 10:55:10 by ahans            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ t_flags	arg_u(unsigned int n, t_flags *ret)
 	char	*num;
 
 	if (n == 0)
-		{
-			ret->len += write(1, "0", 1);
-			ret->charac++;
-		}
+	{
+		ret->len += write(1, "0", 1);
+		ret->charac++;
+	}
 	else
 	{
 		num = ft_uitoa(n);

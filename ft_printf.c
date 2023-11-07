@@ -6,7 +6,7 @@
 /*   By: ahans <allan.hans68350@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 15:44:13 by ahans             #+#    #+#             */
-/*   Updated: 2023/11/06 16:38:33 by ahans            ###   ########.fr       */
+/*   Updated: 2023/11/07 10:54:18 by ahans            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_flags	check_arg_type(va_list arg, t_flags *ret)
 {
 	ret->charac++;
-	if(*ret->charac == 'c')
+	if (*ret->charac == 'c')
 		return (arg_c(arg, ret));
 	else if (*ret->charac == 's')
 		return (arg_s(arg, ret));
@@ -27,9 +27,9 @@ t_flags	check_arg_type(va_list arg, t_flags *ret)
 		return (arg_x(va_arg(arg, int), ret, 'a'));
 	else if (*ret->charac == 'X')
 		return (arg_x(va_arg(arg, int), ret, 'A'));
-	else if (*ret->charac =='%')
+	else if (*ret->charac == '%')
 		return (arg_percent(ret));
-	else if (*ret->charac =='u')
+	else if (*ret->charac == 'u')
 		return (arg_u(va_arg(arg, unsigned int), ret));
 	else
 		return (*ret);
@@ -39,9 +39,9 @@ int	check_charac(va_list args, t_flags *ret)
 {
 	while (*ret->charac)
 	{
-		if(*ret->charac == '%')
+		if (*ret->charac == '%')
 			check_arg_type(args, ret);
-		if(*ret->charac)
+		else if (*ret->charac)
 		{
 			write(1, ret->charac, 1);
 			ret->len++;
@@ -56,7 +56,7 @@ int	ft_printf(const char *format, ...)
 {
 	t_flags	*ret;
 	int		leng;
-	va_list args;
+	va_list	args;
 
 	va_start(args, format);
 	ret = malloc(sizeof(t_flags));
@@ -65,5 +65,5 @@ int	ft_printf(const char *format, ...)
 	ret->err = 0;
 	leng = check_charac(args, ret);
 	free(ret);
-	return(leng);
+	return (leng);
 }

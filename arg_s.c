@@ -6,13 +6,13 @@
 /*   By: ahans <allan.hans68350@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:01:12 by ahans             #+#    #+#             */
-/*   Updated: 2023/11/04 14:01:32 by ahans            ###   ########.fr       */
+/*   Updated: 2023/11/07 11:00:32 by ahans            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_flags arg_s(va_list arg, t_flags *ret)
+t_flags	arg_s(va_list arg, t_flags *ret)
 {
 	ft_putstr(va_arg(arg, char *), ret);
 	ret->charac++;
