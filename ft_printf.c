@@ -6,7 +6,7 @@
 /*   By: ahans <allan.hans68350@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 15:44:13 by ahans             #+#    #+#             */
-/*   Updated: 2023/11/07 10:54:18 by ahans            ###   ########.fr       */
+/*   Updated: 2023/11/07 18:22:48 by ahans            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@ t_flags	check_arg_type(va_list arg, t_flags *ret)
 	else if (*ret->charac == 'u')
 		return (arg_u(va_arg(arg, unsigned int), ret));
 	else
+	{
+		ret->len += write(1, "%", 1);
 		return (*ret);
+	}
 }
 
 int	check_charac(va_list args, t_flags *ret)
