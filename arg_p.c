@@ -6,7 +6,7 @@
 /*   By: ahans <allan.hans68350@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:02:16 by ahans             #+#    #+#             */
-/*   Updated: 2023/11/08 10:52:53 by ahans            ###   ########.fr       */
+/*   Updated: 2023/11/08 17:19:39 by ahans            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,21 @@ static void	ft_put_ptr(uintptr_t num, char min_maj)
 
 t_flags	arg_p(unsigned long long ptr, t_flags *ret)
 {
-	ret->len += write(1, "0x", 2);
+	if (write(1, "0x", 2) == -1)
+	{
+		ret->len = -1;
+		return (*ret);
+	}
+	ret->len += 2;
 	if (ptr == 0)
-		ret->len += write(1, "0", 1);
+	{
+		if (write(1, "0", 1) == -1)
+		{
+			ret->len = -1;
+			return (*ret);
+		}
+		ret->len++;
+	}
 	else
 	{
 		ft_put_ptr(ptr, 'a');

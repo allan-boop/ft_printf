@@ -6,7 +6,7 @@
 /*   By: ahans <allan.hans68350@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:01:12 by ahans             #+#    #+#             */
-/*   Updated: 2023/11/07 11:00:32 by ahans            ###   ########.fr       */
+/*   Updated: 2023/11/08 17:09:28 by ahans            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 t_flags	arg_s(va_list arg, t_flags *ret)
 {
-	ft_putstr(va_arg(arg, char *), ret);
+	if (ft_putstr(va_arg(arg, char *), ret) == -1)
+		ret->len = -1;
 	ret->charac++;
 	return (*ret);
 }

@@ -6,7 +6,7 @@
 /*   By: ahans <allan.hans68350@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 13:29:41 by ahans             #+#    #+#             */
-/*   Updated: 2023/11/07 10:59:28 by ahans            ###   ########.fr       */
+/*   Updated: 2023/11/08 16:45:06 by ahans            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,11 @@
 t_flags	arg_percent(t_flags *ret)
 {
 	ret->charac++;
-	write(1, "%", 1);
+	if (write(1, "%", 1) == -1)
+	{
+		ret->len = -1;
+		return (*ret);
+	}
 	ret->len++;
 	return (*ret);
 }

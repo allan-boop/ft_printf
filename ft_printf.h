@@ -6,7 +6,7 @@
 /*   By: ahans <allan.hans68350@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 15:44:09 by ahans             #+#    #+#             */
-/*   Updated: 2023/11/07 18:35:16 by ahans            ###   ########.fr       */
+/*   Updated: 2023/11/08 17:07:42 by ahans            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_flags
 
 t_flags	arg_percent(t_flags *ret);
 int		ft_printf(const char *format, ...);
-void	ft_putstr(char *str, t_flags *ret);
+int		ft_putstr(char *str, t_flags *ret);
 t_flags	arg_p(unsigned long long ptr, t_flags *ret);
 t_flags	arg_d(va_list arg, t_flags *ret);
 t_flags	arg_s(va_list arg, t_flags *ret);

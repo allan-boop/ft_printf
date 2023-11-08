@@ -6,11 +6,22 @@
 /*   By: ahans <allan.hans68350@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 15:44:13 by ahans             #+#    #+#             */
-/*   Updated: 2023/11/08 16:08:15 by ahans            ###   ########.fr       */
+/*   Updated: 2023/11/08 17:33:44 by ahans            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static t_flags	else_case(t_flags *ret)
+{
+	if (write(1, "%", 1) == -1)
+	{
+		ret->len = -1;
+		return (*ret);
+	}
+	ret->len++;
+	return (*ret);
+}
 
 static t_flags	check_arg_type(va_list arg, t_flags *ret)
 {
@@ -32,10 +43,7 @@ static t_flags	check_arg_type(va_list arg, t_flags *ret)
 	else if (*ret->charac == 'u')
 		return (arg_u(va_arg(arg, unsigned int), ret));
 	else
-	{
-		ret->len += write(1, "%", 1);
-		return (*ret);
-	}
+		return (else_case(ret));
 }
 
 static int	check_charac(va_list args, t_flags *ret)
