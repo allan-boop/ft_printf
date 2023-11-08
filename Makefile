@@ -39,7 +39,7 @@ clean:
 		cd -
 fclean: clean
 		rm -f ${NAME}
-		cd $(LIBFT_DIR) && make clean
+		cd $(LIBFT_DIR) && make fclean
 		cd -
 re: fclean all
 

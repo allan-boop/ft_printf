@@ -6,13 +6,13 @@
 /*   By: ahans <allan.hans68350@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 16:12:26 by ahans             #+#    #+#             */
-/*   Updated: 2023/11/07 10:55:10 by ahans            ###   ########.fr       */
+/*   Updated: 2023/11/08 10:52:55 by ahans            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_num_len(unsigned	int num)
+static int	ft_num_len(unsigned	int num)
 {
 	int	len;
 
@@ -25,7 +25,7 @@ int	ft_num_len(unsigned	int num)
 	return (len);
 }
 
-char	*ft_uitoa(unsigned int n)
+static char	*ft_uitoa(unsigned int n)
 {
 	char	*num;
 	int		len;

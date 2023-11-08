@@ -6,13 +6,13 @@
 /*   By: ahans <allan.hans68350@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 15:44:13 by ahans             #+#    #+#             */
-/*   Updated: 2023/11/07 18:22:48 by ahans            ###   ########.fr       */
+/*   Updated: 2023/11/08 10:49:50 by ahans            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_flags	check_arg_type(va_list arg, t_flags *ret)
+static t_flags	check_arg_type(va_list arg, t_flags *ret)
 {
 	ret->charac++;
 	if (*ret->charac == 'c')
@@ -38,7 +38,7 @@ t_flags	check_arg_type(va_list arg, t_flags *ret)
 	}
 }
 
-int	check_charac(va_list args, t_flags *ret)
+static int	check_charac(va_list args, t_flags *ret)
 {
 	while (*ret->charac)
 	{
@@ -46,7 +46,8 @@ int	check_charac(va_list args, t_flags *ret)
 			check_arg_type(args, ret);
 		else if (*ret->charac)
 		{
-			write(1, ret->charac, 1);
+			if (write(1, ret->charac, 1) == -1)
+				return (-1);
 			ret->len++;
 			ret->charac++;
 		}

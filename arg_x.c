@@ -6,13 +6,13 @@
 /*   By: ahans <allan.hans68350@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 13:58:19 by ahans             #+#    #+#             */
-/*   Updated: 2023/11/07 18:33:28 by ahans            ###   ########.fr       */
+/*   Updated: 2023/11/08 10:50:21 by ahans            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_int_len(unsigned int num)
+static int	ft_int_len(unsigned int num)
 {
 	int	len;
 
@@ -25,7 +25,7 @@ int	ft_int_len(unsigned int num)
 	return (len);
 }
 
-void	ft_put_int(unsigned int num, char min_maj)
+static void	ft_put_int(unsigned int num, char min_maj)
 {
 	if (num >= 16)
 	{
