@@ -6,7 +6,7 @@
 /*   By: ahans <allan.hans68350@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 16:12:26 by ahans             #+#    #+#             */
-/*   Updated: 2023/11/08 10:52:55 by ahans            ###   ########.fr       */
+/*   Updated: 2023/11/08 16:05:14 by ahans            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static char	*ft_uitoa(unsigned int n)
 	len = ft_num_len(n);
 	num = (char *)malloc(sizeof(char) * (len + 1));
 	if (!num)
-		return (0);
+		return (NULL);
 	num[len] = '\0';
 	while (n != 0)
 	{

@@ -35,12 +35,10 @@ makelibft:
 		mv ${LIBFT_NAME} ${NAME}
 clean: 
 		rm -f ${OBJ_FILES}
-		cd $(LIBFT_DIR) && make clean
-		cd -
+		make -C $(LIBFT_DIR) clean
 fclean: clean
 		rm -f ${NAME}
-		cd $(LIBFT_DIR) && make fclean
-		cd -
+		make -C $(LIBFT_DIR) fclean
 re: fclean all
 
 .PHONY: all clean fclean re

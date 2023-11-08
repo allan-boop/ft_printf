@@ -6,7 +6,7 @@
 /*   By: ahans <allan.hans68350@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 15:44:13 by ahans             #+#    #+#             */
-/*   Updated: 2023/11/08 10:49:50 by ahans            ###   ########.fr       */
+/*   Updated: 2023/11/08 16:08:15 by ahans            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,12 @@ int	ft_printf(const char *format, ...)
 	int		leng;
 	va_list	args;
 
+	if (!format)
+		return (-1);
 	va_start(args, format);
 	ret = malloc(sizeof(t_flags));
+	if (!ret)
+		return (0);
 	ret->len = 0;
 	ret->charac = format;
 	ret->err = 0;
